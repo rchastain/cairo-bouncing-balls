@@ -1,0 +1,34 @@
+object Form1: TForm1
+  Left = 349
+  Height = 480
+  Top = 77
+  Width = 640
+  BorderStyle = bsDialog
+  Caption = 'Bouncing Balls TCairoPaintBox'
+  ClientHeight = 480
+  ClientWidth = 640
+  Color = clBtnFace
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  KeyPreview = True
+  OnActivate = FormActivate
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  Position = poScreenCenter
+  LCLVersion = '2.2.4.0'
+  object CPB: TCairoPaintBox
+    Left = 135
+    Height = 105
+    Top = 92
+    Width = 105
+  end
+  object TMR: TIdleTimer
+    Enabled = False
+    Interval = 10
+    OnTimer = TMRTimer
+    Left = 59
+    Top = 51
+  end
+end
