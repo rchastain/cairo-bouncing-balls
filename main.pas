@@ -21,6 +21,7 @@ type
     procedure TMRTimer(Sender: TObject);
   private
     { Private-Deklarationen }
+    FFullScreen: boolean;
     procedure Render;
   public
     { Public-Deklarationen }
@@ -112,13 +113,20 @@ var
 begin
   Randomize;
 
-{$IFDEF FULLSCREEN}
-  Top := 0;
-  Left := 0;
-  Width := Screen.Width;
-  Height := Screen.Height;
-  BorderStyle := bsNone;
-{$ENDIF}
+  FFullScreen := FALSE;
+  if ParamCount > 0 then
+    for i := 1 to ParamCount do
+      if LowerCase(ParamStr(i)) = '-f' then
+        FFullscreen := TRUE;
+
+  if FFullScreen then
+  begin
+    Top := 0;
+    Left := 0;
+    Width := Screen.Width;
+    Height := Screen.Height;
+    BorderStyle := bsNone;
+  end;
 
   CPB.Left := 0;
   CPB.Top := 0;
